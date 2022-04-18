@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import static java.lang.String.format;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.*;
 
 public class SocialNetworksRegistrationTests {
     private WebDriver driver;
@@ -113,5 +113,19 @@ public class SocialNetworksRegistrationTests {
                 .submitFromPopup();
         assertThat(format("Gone to %s", FACEBOOK_URL),
                 driver.getCurrentUrl(), containsString(FACEBOOK_URL));
+    }
+
+    @Test
+    public void popupClosingTest() {
+        SignupPage signupPage = new SignupPage(driver);
+
+        signupPage
+                .open()
+                .closeCookiePopup()
+                .signUpByGoogle.click();
+        signupPage
+                .popupCloseButton.click();
+        assertThat("Native registration form is available",
+                signupPage.submitButton.isEnabled(), is(true));
     }
 }

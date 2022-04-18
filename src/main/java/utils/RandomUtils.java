@@ -51,9 +51,7 @@ public class RandomUtils {
         StringBuilder out = new StringBuilder();
 
         String s = valueOf(ENGLISH_VOC.toCharArray()[abs(random.nextInt()) % ENGLISH_VOC.length()]);
-        for (int j = 0; j < count; j++) {
-            out.append(s);
-        }
+        out.append(s.repeat(Math.max(0, count)));
         return out.toString();
     }
 

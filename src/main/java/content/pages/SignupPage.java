@@ -97,6 +97,9 @@ public class SignupPage {
     @FindBy(id = "tos-signup-terms-error")
     public WebElement popupTermsError;
 
+    @FindBy(className = "socialtos__close")
+    public WebElement popupCloseButton;
+
 
     public SignupPage fillName(String name) {
         fieldName.clear();
@@ -117,14 +120,14 @@ public class SignupPage {
 
     public SignupPage setUpTerms() {
         if (!checkboxTerms.isSelected()) {
-            checkboxTerms.sendKeys(" "); //todo
+            checkboxTerms.sendKeys(" ");
         }
         return this;
     }
 
     public SignupPage subscribeNews() {
         if (!checkboxNews.isSelected()) {
-            checkboxNews.sendKeys(" "); //todo
+            checkboxNews.sendKeys(" ");
         }
         return this;
     }
@@ -146,7 +149,7 @@ public class SignupPage {
 
     public SignupPage setUpTermsPopup() {
         if (!popupTermsCheckbox.isSelected()) {
-            popupTermsCheckbox.sendKeys(" "); //todo
+            popupTermsCheckbox.sendKeys(" ");
         }
         return this;
     }

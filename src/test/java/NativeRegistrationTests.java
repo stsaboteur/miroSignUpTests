@@ -77,6 +77,8 @@ public class NativeRegistrationTests {
 
         assertThat(format("Email on confirmation page is correct: %s", email),
                 emailConfirmPage.subtitle.getText(), containsString(email));
+
+        //backend checks: all data was saved including news subscription agreement
     }
 
     @Test
@@ -101,6 +103,8 @@ public class NativeRegistrationTests {
                 .submitForm();
         assertThat(format("Gone to %s", EMAIL_CONFIRM_URL),
                 driver.getCurrentUrl(), equalTo(EMAIL_CONFIRM_URL));
+
+        //backend checks: all data was saved, news subscription was not agreed
     }
 
     @Test
